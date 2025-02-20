@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["subject", "Auto", "PL", "CC"],
+    "additionalProperties": false,
+    "properties": {
+      "subject": {
+        "type": "string",
+        "minLength": 1
+      },
+      "Auto": {
+        "type": "number",
+        "minimum": 0
+      },
+      "PL": {
+        "type": "number",
+        "minimum": 0
+      },
+      "CC": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  },
+  "minItems": 1
+}

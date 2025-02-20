@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["loanTypes", "data"],
+  "additionalProperties": false,
+  "properties": {
+    "loanTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "data": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["month", "current", "late", "default", "chargeoff", "bankruptcy"],
+            "additionalProperties": false,
+            "properties": {
+              "month": {
+                "type": "string",
+                "enum": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+              },
+              "current": {
+                "type": "number",
+                "minimum": 0
+              },
+              "late": {
+                "type": "number",
+                "minimum": 0
+              },
+              "default": {
+                "type": "number",
+                "minimum": 0
+              },
+              "chargeoff": {
+                "type": "number",
+                "minimum": 0
+              },
+              "bankruptcy": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "minItems": 12,
+          "maxItems": 12
+        }
+      }
+    }
+  }
+}

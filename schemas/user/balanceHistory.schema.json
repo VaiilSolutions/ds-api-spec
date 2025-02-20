@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["month", "loanBalance", "depositBalance"],
+    "additionalProperties": false,
+    "properties": {
+      "month": {
+        "type": "string",
+        "enum": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      },
+      "loanBalance": {
+        "type": "number",
+        "minimum": 0
+      },
+      "depositBalance": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  },
+  "minItems": 1,
+  "maxItems": 13
+}

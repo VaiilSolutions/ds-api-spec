@@ -8,6 +8,65 @@ servers:
   - url: https://tleqd94bfd.execute-api.us-east-1.amazonaws.com/dev
     description: Dev API
 
+
+security:
+  - cognitoAuth: [email, openid]
+
+paths:
+  /dashboard:
+    get:
+      summary: Dashboard data
+      security:
+        - cognitoAuth: []
+      responses:
+        '200':
+          description: Returns dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/dashboard/dashboard.schema.json'
+        '401':
+          description: Unauthorized
+
+  /loan_queue:
+    get:
+      summary: Loan queue data
+      security:
+        - cognitoAuth: []
+      responses:
+        '200':
+          description: Returns loan queue data
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/work_queue/loanQueue.schema.json'
+        '401':
+          description: Unauthorized
+
+  /user/{id}:
+    get:
+      summary: Get user by ID
+      security:
+        - cognitoAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The user ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User info
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/user/user.schema.json'
+        '401':
+          description: Unauthorized
+        '404':
+          description: User not found
+
 components:
   securitySchemes:
     cognitoAuth:
@@ -20,36 +79,3 @@ components:
           scopes:
             email: "Access to the user's email"
             openid: "Grants access to the openid scope"
-  schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-
-security:
-  - cognitoAuth: [email, openid]
-
-paths:
-  /user/{id}:
-    get:
-      summary: Fetch a user by ID
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '404':
-          description: User not found

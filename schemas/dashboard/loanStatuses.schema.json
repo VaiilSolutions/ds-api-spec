@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["amount", "d25", "d50", "d75", "d90", "d100", "bankruptcy", "chargeOff"],
+    "additionalProperties": false,
+    "properties": {
+      "amount": {
+        "type": "string",
+        "enum": ["$300k+", "$100k", "$50k", "$25k", "$10k", "$1k"]
+      },
+      "d25": {
+        "type": "number",
+        "nullable": true
+      },
+      "d50": {
+        "type": "number",
+        "nullable": true
+      },
+      "d75": {
+        "type": "number",
+        "nullable": true
+      },
+      "d90": {
+        "type": "number",
+        "nullable": true
+      },
+      "d100": {
+        "type": "number",
+        "nullable": true
+      },
+      "bankruptcy": {
+        "type": "number",
+        "nullable": true
+      },
+      "chargeOff": {
+        "type": "number",
+        "nullable": true
+      }
+    }
+  }
+}
