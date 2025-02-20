@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Default Sleuth API
+  description: API Specification for the Default Sleuth project
+  version: 1.0.0
+
+servers:
+  - url: https://tleqd94bfd.execute-api.us-east-1.amazonaws.com/dev
+    description: Dev API
+
+components:
+  securitySchemes:
+    cognitoAuth:
+      type: oauth2
+      x-tokenName: id_token
+      flows:
+        authorizationCode:
+          authorizationUrl: https://us-east-1mlmm6zjt7.auth.us-east-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://us-east-1mlmm6zjt7.auth.us-east-1.amazoncognito.com/oauth2/token
+          scopes:
+            email: "Access to the user's email"
+            openid: "Grants access to the openid scope"
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+
+security:
+  - cognitoAuth: [email, openid]
+
+paths:
+  /user/{id}:
+    get:
+      summary: Fetch a user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found

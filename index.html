@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Default Sleuth API Docs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.css" />
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui-bundle.js"></script>
+    <script>
+      window.onload = function() {
+        const getRedirectUrl = () => {
+          if (window.location.hostname === 'localhost') {
+            return 'http://localhost:8000/oauth2-redirect.html';
+          } else {
+            return 'https://your-production-domain.com/oauth2-redirect.html';
+          }
+        };
+
+        const ui = SwaggerUIBundle({
+          url: 'openapi.yaml',
+          dom_id: '#swagger-ui',
+          presets: [ SwaggerUIBundle.presets.apis ],
+          oauth2RedirectUrl: getRedirectUrl()
+        });
+    
+        ui.initOAuth({
+          clientId: "7ljj5bscj1s6d9tiuldtpfoi29",
+          clientSecret: "",
+          usePkceWithAuthorizationCodeGrant: true,
+          scopes: ["email", "openid"],
+          appName: "Default Sleuth API Docs"
+        });
+      };
+    </script>
+  </body>
+</html>
