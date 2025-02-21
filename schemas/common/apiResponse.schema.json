@@ -9,6 +9,5 @@
     "details": { "type": "string" },
     "timestamp": { "type": "string", "format": "date-time" }
   },
-  "required": ["is_success", "system_code", "message", "timestamp"],
-  "additionalProperties": false
+  "required": ["is_success", "system_code", "message", "timestamp"]
 }

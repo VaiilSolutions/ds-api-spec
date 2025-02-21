@@ -12,23 +12,23 @@
       },
       "healthy": {
         "type": "number",
-        "minimum": 0,
+        "minimum": 0
       },
       "watchlist": {
         "type": "number",
-        "minimum": 0,
+        "minimum": 0
       },
       "intervention": {
         "type": "number",
-        "minimum": 0,
+        "minimum": 0
       },
       "chargedOff": {
         "type": "number",
-        "minimum": 0,
+        "minimum": 0
       },
       "bankruptcy": {
         "type": "number",
-        "minimum": 0,
+        "minimum": 0
       }
     }
   },

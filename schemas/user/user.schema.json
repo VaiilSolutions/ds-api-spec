@@ -7,8 +7,7 @@
       "properties": {
         "data": { "$ref": "userData.schema.json" }
       },
-      "required": ["data"],
-      "additionalProperties": false
+      "required": ["data"]
     }
   ]
 }
