@@ -11,6 +11,7 @@ window.onload = function() {
     url: 'openapi.yaml',
     dom_id: '#swagger-ui',
     oauth2RedirectUrl: getRedirectUrl(),
+    defaultModelRendering: 'model',
     deepLinking: true,
     presets: [
       SwaggerUIBundle.presets.apis,
