@@ -3,22 +3,15 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["subject", "Auto", "PL", "CC"],
-    "additionalProperties": false,
+    "required": ["subject"],
     "properties": {
       "subject": {
         "type": "string",
         "minLength": 1
-      },
-      "Auto": {
-        "type": "number",
-        "minimum": 0
-      },
-      "PL": {
-        "type": "number",
-        "minimum": 0
-      },
-      "CC": {
+      }
+    },
+    "patternProperties": {
+      "^(?!subject$).*$": {
         "type": "number",
         "minimum": 0
       }

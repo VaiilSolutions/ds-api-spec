@@ -1,25 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "required": [
-    "userProfile",
-    "accountDetails",
-    "balanceHistory",
-    "activeLoans"
-  ],
-  "additionalProperties": false,
-  "properties": {
-    "userProfile": {
-      "$ref": "userProfile.schema.json"
-    },
-    "accountDetails": {
-      "$ref": "accountDetails.schema.json"
-    },
-    "balanceHistory": {
-      "$ref": "balanceHistory.schema.json"
-    },
-    "activeLoans": {
-      "$ref": "activeLoans.schema.json"
+  "allOf": [
+    { "$ref": "../common/apiResponse.schema.json" },
+    {
+      "type": "object",
+      "properties": {
+        "data": { "$ref": "userData.schema.json" }
+      },
+      "required": ["data"],
+      "additionalProperties": false
     }
-  }
+  ]
 }

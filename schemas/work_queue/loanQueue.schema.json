@@ -1,127 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "required": ["loans", "enums"],
-  "additionalProperties": false,
-  "properties": {
-    "loans": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "defaultScore",
-          "defaultCategory",
-          "reasons",
-          "defaultSleuthStatus",
-          "loanType",
-          "coreStatus",
-          "nextPaymentDue",
-          "paymentAmountDue",
-          "riskLevel"
-        ],
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 1
-          },
-          "defaultScore": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 100
-          },
-          "defaultCategory": {
-            "type": "string",
-            "minLength": 1
-          },
-          "reasons": {
-            "type": "string",
-            "minLength": 1
-          },
-          "defaultSleuthStatus": {
-            "type": "string",
-            "minLength": 1
-          },
-          "loanType": {
-            "type": "string",
-            "minLength": 1
-          },
-          "coreStatus": {
-            "type": "string",
-            "minLength": 1
-          },
-          "nextPaymentDue": {
-            "type": "string",
-            "format": "date"
-          },
-          "paymentAmountDue": {
-            "type": "number",
-            "minimum": 0
-          },
-          "riskLevel": {
-            "type": "string",
-            "minLength": 1
-          }
-        }
-      },
-      "minItems": 1
-    },
-    "enums": {
+  "allOf": [
+    { "$ref": "../common/apiResponse.schema.json" },
+    {
       "type": "object",
-      "required": ["statuses", "loanTypes", "defaultCategories", "coreStatuses", "riskLevels"],
-      "additionalProperties": false,
       "properties": {
-        "statuses": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "loanTypes": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "defaultCategories": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "coreStatuses": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "riskLevels": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "minItems": 1,
-          "uniqueItems": true
-        }
-      }
+        "data": { "$ref": "loanQueueData.schema.json" }
+      },
+      "required": ["data"],
+      "additionalProperties": false
     }
-  }
+  ]
 }
