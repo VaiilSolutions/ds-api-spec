@@ -11,7 +11,8 @@
         "enum": ["current", "early", "late", "critical", "chargeoff", "bankruptcy"]
       },
       "label": {
-        "type": "string"
+        "type": "string",
+        "minLength": 1
       },
       "amount": {
         "type": "number",
@@ -22,5 +23,7 @@
         "minimum": 0
       }
     }
-  }
+  },
+  "minItems": 6,
+  "maxItems": 6
 }

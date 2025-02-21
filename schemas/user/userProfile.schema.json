@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["id", "name", "profilePicture", "memberId", "email", "phone", "address", "joinDate"],
+  "required": ["id", "name", "memberId", "email", "phone", "address", "joinDate"],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -10,9 +10,6 @@
     "name": {
       "type": "string",
       "minLength": 1
-    },
-    "profilePicture": {
-      "type": "string"
     },
     "memberId": {
       "type": "string",

@@ -11,33 +11,35 @@
         "enum": ["$300k+", "$100k", "$50k", "$25k", "$10k", "$1k"]
       },
       "d25": {
-        "type": "number",
-        "nullable": true
+        "type": ["number", "null"],
+        "minimum": 0
       },
       "d50": {
-        "type": "number",
-        "nullable": true
+        "type": ["number", "null"],
+        "minimum": 0
       },
       "d75": {
-        "type": "number",
-        "nullable": true
+        "type": ["number", "null"],
+        "minimum": 0
       },
       "d90": {
-        "type": "number",
-        "nullable": true
+        "type": ["number", "null"],
+        "minimum": 0
       },
       "d100": {
-        "type": "number",
-        "nullable": true
+        "type": ["number", "null"],
+        "minimum": 0
       },
       "bankruptcy": {
-        "type": "number",
-        "nullable": true
+        "type": ["number", "null"],
+        "minimum": 0
       },
       "chargeOff": {
-        "type": "number",
-        "nullable": true
+        "type": ["number", "null"],
+        "minimum": 0
       }
     }
-  }
+  },
+  "minItems": 6,
+  "maxItems": 6
 }

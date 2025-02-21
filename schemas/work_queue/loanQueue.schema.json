@@ -24,8 +24,7 @@
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "number",
-            "minimum": 1
+            "type": "integer"
           },
           "name": {
             "type": "string",

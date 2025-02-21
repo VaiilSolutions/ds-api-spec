@@ -3,7 +3,7 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["type", "healthy", "watchlist", "intervention"],
+    "required": ["type", "healthy", "watchlist", "intervention", "loanCount", "totalBalance"],
     "additionalProperties": false,
     "properties": {
       "type": {
@@ -21,6 +21,14 @@
       "intervention": {
         "type": "number",
         "minimum": 0
+      },
+      "loanCount": {
+          "type": "integer",
+          "minimum": 0
+      },
+      "totalBalance": {
+          "type": "number",
+          "minimum": 0
       }
     }
   },

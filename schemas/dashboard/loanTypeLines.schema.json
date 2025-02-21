@@ -19,37 +19,40 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["month", "current", "late", "default", "chargeoff", "bankruptcy"],
+            "required": ["month", "healthy", "watchlist", "intervention", "loanCount", "totalBalance"],
             "additionalProperties": false,
             "properties": {
               "month": {
                 "type": "string",
                 "enum": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
               },
-              "current": {
+              "healthy": {
                 "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "watchlist": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "intervention": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "loanCount": {
+                "type": "integer",
                 "minimum": 0
               },
-              "late": {
-                "type": "number",
-                "minimum": 0
-              },
-              "default": {
-                "type": "number",
-                "minimum": 0
-              },
-              "chargeoff": {
-                "type": "number",
-                "minimum": 0
-              },
-              "bankruptcy": {
+              "totalBalance": {
                 "type": "number",
                 "minimum": 0
               }
             }
           },
-          "minItems": 12,
-          "maxItems": 12
+          "minItems": 1,
+          "maxItems": 13
         }
       }
     }

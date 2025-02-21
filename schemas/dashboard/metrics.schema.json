@@ -10,7 +10,8 @@
       "additionalProperties": false,
       "properties": {
         "amount": {
-          "type": "number"
+          "type": "number",
+          "minimum": 0
         },
         "percentageChange": {
           "type": "number"
@@ -23,7 +24,8 @@
       "additionalProperties": false,
       "properties": {
         "amount": {
-          "type": "number"
+          "type": "number",
+          "minimum": 0
         },
         "percentageChange": {
           "type": "number"
@@ -36,7 +38,8 @@
       "additionalProperties": false,
       "properties": {
         "amount": {
-          "type": "number"
+          "type": "number",
+          "minimum": 0
         },
         "percentageChange": {
           "type": "number"

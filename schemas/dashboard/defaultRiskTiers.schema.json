@@ -3,25 +3,35 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["month", "actual", "expected"],
+    "required": ["month", "healthy", "watchlist", "intervention", "chargedOff", "bankruptcy"],
     "additionalProperties": false,
     "properties": {
       "month": {
         "type": "string",
         "enum": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
       },
-      "actual": {
+      "healthy": {
         "type": "number",
         "minimum": 0,
-        "maximum": 100
       },
-      "expected": {
+      "watchlist": {
         "type": "number",
         "minimum": 0,
-        "maximum": 100
+      },
+      "intervention": {
+        "type": "number",
+        "minimum": 0,
+      },
+      "chargedOff": {
+        "type": "number",
+        "minimum": 0,
+      },
+      "bankruptcy": {
+        "type": "number",
+        "minimum": 0,
       }
     }
   },
-  "minItems": 12,
-  "maxItems": 12
+  "minItems": 1,
+  "maxItems": 13
 }
