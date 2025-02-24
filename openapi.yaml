@@ -64,8 +64,45 @@ paths:
                 $ref: './schemas/member/member.schema.json'
         '401':
           description: Unauthorized
-        '404':
-          description: Member not found
+  /user:
+    post:
+      summary: Create user
+      security:
+        - cognitoAuth: []
+      requestBody:
+        description: For testing purposes, please end the user email with **@default-sleuth.test.com** to prevent excess Cognito emails from being sent.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/user/postUserBody.schema.json'
+            example:
+              name: Test Admin
+              role_id: 1
+              email: testuser@default-sleuth.test.com
+      responses:
+        '200':
+          description: User info
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/user/user.schema.json'
+        '401':
+          description: Unauthorized
+  /users:
+    get:
+      summary: Get users
+      security:
+        - cognitoAuth: []
+      responses:
+        '200':
+          description: All organization users
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/user/users.schema.json'
+        '401':
+          description: Unauthorized
 
 components:
   securitySchemes:
