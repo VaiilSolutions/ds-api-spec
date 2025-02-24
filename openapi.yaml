@@ -43,29 +43,29 @@ paths:
         '401':
           description: Unauthorized
 
-  /user/{id}:
+  /member/{id}:
     get:
-      summary: Get user by ID
+      summary: Get member by ID
       security:
         - cognitoAuth: []
       parameters:
         - name: id
           in: path
           required: true
-          description: The user ID
+          description: The member (internal) ID
           schema:
             type: string
       responses:
         '200':
-          description: User info
+          description: Member info
           content:
             application/json:
               schema:
-                $ref: './schemas/user/user.schema.json'
+                $ref: './schemas/member/member.schema.json'
         '401':
           description: Unauthorized
         '404':
-          description: User not found
+          description: Member not found
 
 components:
   securitySchemes:

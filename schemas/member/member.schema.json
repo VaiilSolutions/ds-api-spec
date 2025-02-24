@@ -5,7 +5,7 @@
     {
       "type": "object",
       "properties": {
-        "data": { "$ref": "userData.schema.json" }
+        "data": { "$ref": "memberData.schema.json" }
       },
       "required": ["data"]
     }
