@@ -13,7 +13,7 @@
       "minLength": 1
     },
     "notes": {
-      "type": "string",
+      "type": "string"
     },
     "status": {
       "type": "string"
