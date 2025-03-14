@@ -103,6 +103,31 @@ paths:
                 $ref: './schemas/user/users.schema.json'
         '401':
           description: Unauthorized
+  /contact_history:
+    post:
+      summary: Create contact history entry
+      security:
+        - cognitoAuth: []
+      requestBody:
+        description: Creates con
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/member/postContactHistoryBody.schema.json'
+            example:
+              contact_type: Phone Call
+              notes: Discussed payment plan options
+              status: Completed
+      responses:
+        '200':
+          description: User info
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/member/contactHistory.schema.json'
+        '401':
+          description: Unauthorized
 
 components:
   securitySchemes:
