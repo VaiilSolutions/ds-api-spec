@@ -3,17 +3,17 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["balance", "defaultPropensity"],
+    "required": ["organization_member_id", "balance", "risk_score"],
     "additionalProperties": false,
     "properties": {
-      "id": {
+      "organization_member_id": {
         "type": "integer"
       },
       "balance": {
         "type": "number",
         "minimum": 0
       },
-      "defaultPropensity": {
+      "risk_score": {
         "type": "number",
         "minimum": 0,
         "maximum": 100

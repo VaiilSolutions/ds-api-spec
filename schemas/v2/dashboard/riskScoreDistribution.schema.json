@@ -17,6 +17,6 @@
       }
     }
   },
-  "minItems": 100,
+  "minItems": 101,
   "maxItems": 101
 }

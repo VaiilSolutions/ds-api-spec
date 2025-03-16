@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+      "type": "object",
+      "required": ["balance", "risk_tier", "value_tier", "risk_tier_order", "value_tier_order"],
+      "additionalProperties": false,
+      "properties": {
+          "balance": {
+              "type": ["number", "null"],
+              "minimum": 0
+          },
+          "risk_tier": {
+              "type": "string",
+              "minLength": 1
+          },
+          "value_tier": {
+              "type": "string",
+              "minLength": 1
+          },
+          "risk_tier_order": {
+              "type": "integer"
+          },
+          "value_tier_order": {
+              "type": "integer"
+          }
+      }
+  },
+  "minItems": 1
+}

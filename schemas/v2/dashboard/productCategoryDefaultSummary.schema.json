@@ -3,32 +3,32 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["type", "healthy", "watchlist", "intervention", "loanCount", "totalBalance"],
+    "required": ["product_category", "loan_count", "total_balance", "healthy_percent", "watchlist_percent", "intervention_percent"],
     "additionalProperties": false,
     "properties": {
-      "type": {
+      "product_category": {
         "type": "string",
         "minLength": 1
       },
-      "healthy": {
-        "type": "number",
-        "minimum": 0
-      },
-      "watchlist": {
-        "type": "number",
-        "minimum": 0
-      },
-      "intervention": {
-        "type": "number",
-        "minimum": 0
-      },
-      "loanCount": {
+      "loan_count": {
           "type": "integer",
           "minimum": 0
       },
-      "totalBalance": {
+      "total_balance": {
           "type": "number",
           "minimum": 0
+      },
+      "healthy_percent": {
+        "type": "number",
+        "minimum": 0
+      },
+      "watchlist_percent": {
+        "type": "number",
+        "minimum": 0
+      },
+      "intervention_percent": {
+        "type": "number",
+        "minimum": 0
       }
     }
   },

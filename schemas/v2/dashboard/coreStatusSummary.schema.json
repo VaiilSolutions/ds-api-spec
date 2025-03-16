@@ -3,15 +3,18 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["subject"],
+    "required": ["label", "count", "amount"],
+    "additionalProperties": false,
     "properties": {
-      "subject": {
+      "label": {
         "type": "string",
         "minLength": 1
-      }
-    },
-    "patternProperties": {
-      "^(?!subject$).*$": {
+      },
+      "count": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "amount": {
         "type": "number",
         "minimum": 0
       }

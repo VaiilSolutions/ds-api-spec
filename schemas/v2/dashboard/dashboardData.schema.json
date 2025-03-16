@@ -2,48 +2,52 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "required": [
-    "metrics",
-    "coreStatus",
-    "chargeOffRates",
-    "loanStatuses",
-    "riskScoreDistribution",
-    "defaultRiskTiers",
-    "loanBalanceScatter",
-    "loanTypeRisk",
-    "defaultRadar",
-    "loanTypeLines"
+    "loan_metrics_summary",
+    "core_status_summary",
+    "charge_off_rates_monthly",
+    "default_category_balances",
+    "loan_balance_matrix",
+    "risk_score_distribution",
+    "default_category_trends",
+    "loan_balance_risk_scatter",
+    "product_category_default_summary",
+    "default_reason_distribution",
+    "product_category_default_trends"
   ],
   "additionalProperties": false,
   "properties": {
-    "metrics": {
-      "$ref": "metrics.schema.json"
+    "loan_metrics_summary": {
+      "$ref": "loanMetricsSummary.schema.json"
     },
-    "coreStatus": {
-      "$ref": "coreStatus.schema.json"
+    "core_status_summary": {
+      "$ref": "coreStatusSummary.schema.json"
     },
-    "chargeOffRates": {
-      "$ref": "chargeOffRates.schema.json"
+    "charge_off_rates_monthly": {
+      "$ref": "chargeOffRatesMonthly.schema.json"
     },
-    "loanStatuses": {
-      "$ref": "loanStatuses.schema.json"
+    "default_category_balances": {
+      "$ref": "defaultCategoryBalances.schema.json"
     },
-    "riskScoreDistribution": {
+    "loan_balance_matrix": {
+      "$ref": "loanBalanceMatrix.schema.json"
+    },
+    "risk_score_distribution": {
       "$ref": "riskScoreDistribution.schema.json"
     },
-    "defaultRiskTiers": {
-      "$ref": "defaultRiskTiers.schema.json"
+    "default_category_trends": {
+      "$ref": "defaultCategoryTrends.schema.json"
     },
-    "loanBalanceScatter": {
-      "$ref": "loanBalanceScatter.schema.json"
+    "loan_balance_risk_scatter": {
+      "$ref": "loanBalanceRiskScatter.schema.json"
     },
-    "loanTypeRisk": {
-      "$ref": "loanTypeRisk.schema.json"
+    "product_category_default_summary": {
+      "$ref": "productCategoryDefaultSummary.schema.json"
     },
-    "defaultRadar": {
-      "$ref": "defaultRadar.schema.json"
+    "default_reason_distribution": {
+      "$ref": "defaultReasonDistribution.schema.json"
     },
-    "loanTypeLines": {
-      "$ref": "loanTypeLines.schema.json"
+    "product_category_default_trends": {
+      "$ref": "productCategoryDefaultTrends.schema.json"
     }
   }
 }
