@@ -24,6 +24,5 @@
       }
     }
   },
-  "minItems": 6,
-  "maxItems": 6
+  "minItems": 1
 }
