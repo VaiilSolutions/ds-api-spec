@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["type", "healthy", "watchlist", "intervention", "loanCount", "totalBalance"],
+    "additionalProperties": false,
+    "properties": {
+      "type": {
+        "type": "string",
+        "minLength": 1
+      },
+      "healthy": {
+        "type": "number",
+        "minimum": 0
+      },
+      "watchlist": {
+        "type": "number",
+        "minimum": 0
+      },
+      "intervention": {
+        "type": "number",
+        "minimum": 0
+      },
+      "loanCount": {
+          "type": "integer",
+          "minimum": 0
+      },
+      "totalBalance": {
+          "type": "number",
+          "minimum": 0
+      }
+    }
+  },
+  "minItems": 1
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["loanTypes", "data"],
+  "additionalProperties": false,
+  "properties": {
+    "loanTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "data": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["month", "healthy", "watchlist", "intervention", "loanCount", "totalBalance"],
+            "additionalProperties": false,
+            "properties": {
+              "month": {
+                "type": "string",
+                "enum": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+              },
+              "healthy": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "watchlist": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "intervention": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "loanCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "totalBalance": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 13
+        }
+      }
+    }
+  }
+}

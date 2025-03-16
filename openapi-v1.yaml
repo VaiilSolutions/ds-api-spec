@@ -24,7 +24,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/dashboard/dashboard.schema.json'
+                $ref: './schemas/v1/dashboard/dashboard.schema.json'
         '401':
           description: Unauthorized
 
@@ -39,7 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/work_queue/loanQueue.schema.json'
+                $ref: './schemas/v1/work_queue/loanQueue.schema.json'
         '401':
           description: Unauthorized
 
@@ -61,7 +61,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/member/member.schema.json'
+                $ref: './schemas/v1/member/member.schema.json'
         '401':
           description: Unauthorized
   /user:
@@ -75,7 +75,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './schemas/user/postUserBody.schema.json'
+              $ref: './schemas/v1/user/postUserBody.schema.json'
             example:
               name: Test Admin
               role_id: 1
@@ -86,7 +86,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/user/user.schema.json'
+                $ref: './schemas/v1/user/user.schema.json'
         '401':
           description: Unauthorized
   /users:
@@ -100,7 +100,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/user/users.schema.json'
+                $ref: './schemas/v1/user/users.schema.json'
         '401':
           description: Unauthorized
   /contact_history:
@@ -114,7 +114,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './schemas/member/postContactHistoryBody.schema.json'
+              $ref: './schemas/v1/member/postContactHistoryBody.schema.json'
             example:
               contact_type: Phone Call
               notes: Discussed payment plan options
@@ -125,7 +125,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './schemas/member/contactHistory.schema.json'
+                $ref: './schemas/v1/member/contactHistory.schema.json'
         '401':
           description: Unauthorized
 

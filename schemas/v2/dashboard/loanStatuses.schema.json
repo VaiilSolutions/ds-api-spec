@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["totals", "rows"],
+  "additionalProperties": false,
+  "properties": {
+    "totals": {
+      "type": "object",
+      "required": ["healthy", "watchlist", "intervention"],
+      "additionalProperties": false,
+      "properties": {
+        "healthy": {
+          "type": "number",
+          "minimum": 0
+        },
+        "watchlist": {
+          "type": "number",
+          "minimum": 0
+        },
+        "intervention": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["amount", "d25", "d50", "d75", "d90", "d100", "bankruptcy", "chargeOff"],
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "type": "string",
+            "enum": ["$300k+", "$100k", "$50k", "$25k", "$10k", "$1k"]
+          },
+          "d25": {
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "d50": {
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "d75": {
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "d90": {
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "d100": {
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "bankruptcy": {
+            "type": ["number", "null"],
+            "minimum": 0
+          },
+          "chargeOff": {
+            "type": ["number", "null"],
+            "minimum": 0
+          }
+        }
+      },
+      "minItems": 6,
+      "maxItems": 6
+    }
+  }
+}
