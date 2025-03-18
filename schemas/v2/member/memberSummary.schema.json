@@ -48,7 +48,7 @@
       "format": "date"
     },
     "last_direct_deposit": {
-      "type": "string",
+      "type": ["string", "null"],
       "format": "date"
     },
     "indirect": {
@@ -60,7 +60,7 @@
       "maximum": 850
     },
     "previous_fico_score": {
-      "type": "integer",
+      "type": ["integer", "null"],
       "minimum": 300,
       "maximum": 850
     },
