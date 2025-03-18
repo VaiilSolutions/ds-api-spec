@@ -64,7 +64,7 @@
         "minimum": 0
       },
       "utilization": {
-        "type": "number",
+        "type": ["number", "null"],
         "minimum": 0,
         "maximum": 100
       },
