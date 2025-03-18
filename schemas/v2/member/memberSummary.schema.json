@@ -44,7 +44,7 @@
       "minimum": 0
     },
     "last_login": {
-      "type": "string",
+      "type": ["string", "none"],
       "format": "date"
     },
     "last_direct_deposit": {
