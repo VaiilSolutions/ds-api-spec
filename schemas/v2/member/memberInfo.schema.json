@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["external_member_id", "open_date", "city", "county", "state_code", "zip"],
+  "additionalProperties": false,
+  "properties": {
+    "external_member_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "open_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "city": {
+      "type": "string",
+      "minLength": 1
+    },
+    "county": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state_code": {
+      "type": "string",
+      "minLength": 1
+    },
+    "zip": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

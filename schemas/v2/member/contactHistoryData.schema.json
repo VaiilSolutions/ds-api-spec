@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["date", "type", "notes", "status", "agent"],
+  "additionalProperties": false,
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "agent": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

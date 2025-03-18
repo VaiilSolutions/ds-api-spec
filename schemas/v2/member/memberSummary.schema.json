@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "open_loan_categories",
+    "open_deposit_categories",
+    "open_service_categories",
+    "overdraft_count_12m",
+    "last_login",
+    "last_direct_deposit",
+    "indirect",
+    "current_fico_score",
+    "previous_fico_score",
+    "decline_count_12m"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "open_loan_categories": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "open_deposit_categories": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "open_service_categories": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "overdraft_count_12m": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_login": {
+      "type": "string",
+      "format": "date"
+    },
+    "last_direct_deposit": {
+      "type": "string",
+      "format": "date"
+    },
+    "indirect": {
+      "type": "boolean"
+    },
+    "current_fico_score": {
+      "type": "integer",
+      "minimum": 300,
+      "maximum": 850
+    },
+    "previous_fico_score": {
+      "type": "integer",
+      "minimum": 300,
+      "maximum": 850
+    },
+    "decline_count_12m": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

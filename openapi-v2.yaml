@@ -27,6 +27,42 @@ paths:
                 $ref: './schemas/v2/dashboard/dashboard.schema.json'
         '401':
           description: Unauthorized
+  /loan_queue:
+    get:
+      summary: Loan queue data
+      security:
+        - cognitoAuth: []
+      responses:
+        '200':
+          description: Returns loan queue data
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/work_queue/loanQueue.schema.json'
+        '401':
+          description: Unauthorized
+
+  /member/{id}:
+    get:
+      summary: Get member by ID
+      security:
+        - cognitoAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The member (internal) ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Member info
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/member/member.schema.json'
+        '401':
+          description: Unauthorized
 
 #  /loan_queue:
 #    get:
