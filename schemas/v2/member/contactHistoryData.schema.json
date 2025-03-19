@@ -1,14 +1,17 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["date", "type", "notes", "status", "agent"],
+  "required": ["account_id", "date", "contact_type", "notes", "status", "agent"],
   "additionalProperties": false,
   "properties": {
+    "account_id": {
+      "type": "integer"
+    },
     "date": {
       "type": "string",
-      "format": "date"
+      "format": "date
     },
-    "type": {
+    "contact_type": {
       "type": "string",
       "minLength": 1
     },
@@ -16,7 +19,8 @@
       "type": "string"
     },
     "status": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "agent": {
       "type": "string",

@@ -88,14 +88,14 @@
         "type": "array",
         "items": {
           "type": "object",
-          "required": ["date", "type", "notes", "status", "agent"],
+          "required": ["date", "contact_type", "notes", "status", "agent"],
           "additionalProperties": false,
           "properties": {
             "date": {
               "type": "string",
               "format": "date"
             },
-            "type": {
+            "contact_type": {
               "type": "string",
               "minLength": 1
             },
