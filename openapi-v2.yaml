@@ -63,107 +63,70 @@ paths:
                 $ref: './schemas/v2/member/member.schema.json'
         '401':
           description: Unauthorized
-
-#  /loan_queue:
-#    get:
-#      summary: Loan queue data
-#      security:
-#        - cognitoAuth: []
-#      responses:
-#        '200':
-#          description: Returns loan queue data
-#          content:
-#            application/json:
-#              schema:
-#                $ref: './schemas/work_queue/loanQueue.schema.json'
-#        '401':
-#          description: Unauthorized
-#
-#  /member/{id}:
-#    get:
-#      summary: Get member by ID
-#      security:
-#        - cognitoAuth: []
-#      parameters:
-#        - name: id
-#          in: path
-#          required: true
-#          description: The member (internal) ID
-#          schema:
-#            type: string
-#      responses:
-#        '200':
-#          description: Member info
-#          content:
-#            application/json:
-#              schema:
-#                $ref: './schemas/member/member.schema.json'
-#        '401':
-#          description: Unauthorized
-#  /user:
-#    post:
-#      summary: Create user
-#      security:
-#        - cognitoAuth: []
-#      requestBody:
-#        description: For testing purposes, please end the user email with **@default-sleuth.test.com** to prevent excess Cognito emails from being sent.
-#        required: true
-#        content:
-#          application/json:
-#            schema:
-#              $ref: './schemas/user/postUserBody.schema.json'
-#            example:
-#              name: Test Admin
-#              role_id: 1
-#              email: testuser@default-sleuth.test.com
-#      responses:
-#        '200':
-#          description: User info
-#          content:
-#            application/json:
-#              schema:
-#                $ref: './schemas/user/user.schema.json'
-#        '401':
-#          description: Unauthorized
-#  /users:
-#    get:
-#      summary: Get users
-#      security:
-#        - cognitoAuth: []
-#      responses:
-#        '200':
-#          description: All organization users
-#          content:
-#            application/json:
-#              schema:
-#                $ref: './schemas/user/users.schema.json'
-#        '401':
-#          description: Unauthorized
-#  /contact_history:
-#    post:
-#      summary: Create contact history entry
-#      security:
-#        - cognitoAuth: []
-#      requestBody:
-#        description: Creates con
-#        required: true
-#        content:
-#          application/json:
-#            schema:
-#              $ref: './schemas/member/postContactHistoryBody.schema.json'
-#            example:
-#              contact_type: Phone Call
-#              notes: Discussed payment plan options
-#              status: Completed
-#      responses:
-#        '200':
-#          description: User info
-#          content:
-#            application/json:
-#              schema:
-#                $ref: './schemas/member/contactHistory.schema.json'
-#        '401':
-#          description: Unauthorized
+  /user:
+    post:
+      summary: Create user
+      security:
+        - cognitoAuth: []
+      requestBody:
+        description: For testing purposes, please end the user email with **@default-sleuth.test.com** to prevent excess Cognito emails from being sent.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/v2/user/postUserBody.schema.json'
+            example:
+              name: Test Admin
+              role_id: 1
+              email: testuser@default-sleuth.test.com
+      responses:
+        '200':
+          description: User info
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/user/user.schema.json'
+        '401':
+          description: Unauthorized
+  /users:
+    get:
+      summary: Get users
+      security:
+        - cognitoAuth: []
+      responses:
+        '200':
+          description: All organization users
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/user/users.schema.json'
+        '401':
+          description: Unauthorized
+  /contact_history:
+    post:
+      summary: Create contact history entry
+      security:
+        - cognitoAuth: []
+      requestBody:
+        description: Creates con
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/v2/member/postContactHistoryBody.schema.json'
+            example:
+              contact_type: Phone Call
+              notes: Discussed payment plan options
+              status: Completed
+      responses:
+        '200':
+          description: User info
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/member/contactHistory.schema.json'
+        '401':
+          description: Unauthorized
 
 components:
   securitySchemes:
