@@ -9,7 +9,7 @@
     },
     "date": {
       "type": "string",
-      "format": "date
+      "format": "date"
     },
     "contact_type": {
       "type": "string",
