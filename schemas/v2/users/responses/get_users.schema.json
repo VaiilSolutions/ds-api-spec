@@ -1,14 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "allOf": [
-    { "$ref": "../common/apiResponse.schema.json" },
+    { "$ref": "../../common/api_response.schema.json" },
     {
       "type": "object",
       "properties": {
-        "data": { 
+        "data": {
           "type": "array",
-          "items": { "$ref": "userData.schema.json" },
-          "minLength": 1
+          "items": { "$ref": "../models/user.schema.json" },
+          "minItems": 1
         }
       },
       "required": ["data"]

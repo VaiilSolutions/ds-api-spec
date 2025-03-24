@@ -1,11 +1,11 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "allOf": [
-    { "$ref": "../common/apiResponse.schema.json" },
+    { "$ref": "../../common/api_response.schema.json" },
     {
       "type": "object",
       "properties": {
-        "data": { "$ref": "contactHistoryData.schema.json" }
+        "data": { "$ref": "../models/loan.schema.json" }
       },
       "required": ["data"]
     }

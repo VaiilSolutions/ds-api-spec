@@ -1,12 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["account_id", "date", "contact_type", "notes", "status", "agent"],
+  "required": ["date", "contact_type", "notes", "status", "agent"],
   "additionalProperties": false,
   "properties": {
-    "account_id": {
-      "type": "integer"
-    },
     "date": {
       "type": "string",
       "format": "date"

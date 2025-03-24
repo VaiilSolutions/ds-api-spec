@@ -10,16 +10,16 @@
   "additionalProperties": false,
   "properties": {
     "member_info": {
-      "$ref": "memberInfo.schema.json"
+      "$ref": "member_info.schema.json"
     },
     "member_summary": {
-      "$ref": "memberSummary.schema.json"
+      "$ref": "member_summary.schema.json"
     },
     "member_balance_history": {
-      "$ref": "memberBalanceHistory.schema.json"
+      "$ref": "member_balance_history.schema.json"
     },
     "member_open_loans": {
-      "$ref": "memberOpenLoans.schema.json"
+      "$ref": "member_open_loans.schema.json"
     }
   }
 }

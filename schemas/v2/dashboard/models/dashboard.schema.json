@@ -17,37 +17,37 @@
   "additionalProperties": false,
   "properties": {
     "loan_metrics_summary": {
-      "$ref": "loanMetricsSummary.schema.json"
+      "$ref": "loan_metrics_summary.schema.json"
     },
     "core_status_summary": {
-      "$ref": "coreStatusSummary.schema.json"
+      "$ref": "core_status_summary.schema.json"
     },
     "charge_off_rates_monthly": {
-      "$ref": "chargeOffRatesMonthly.schema.json"
+      "$ref": "charge_off_rates_monthly.schema.json"
     },
     "default_category_balances": {
-      "$ref": "defaultCategoryBalances.schema.json"
+      "$ref": "default_category_balances.schema.json"
     },
     "loan_balance_matrix": {
-      "$ref": "loanBalanceMatrix.schema.json"
+      "$ref": "loan_balance_matrix.schema.json"
     },
     "risk_score_distribution": {
-      "$ref": "riskScoreDistribution.schema.json"
+      "$ref": "risk_score_distribution.schema.json"
     },
     "default_category_trends": {
-      "$ref": "defaultCategoryTrends.schema.json"
+      "$ref": "default_category_trends.schema.json"
     },
     "loan_balance_risk_scatter": {
-      "$ref": "loanBalanceRiskScatter.schema.json"
+      "$ref": "loan_balance_risk_scatter.schema.json"
     },
     "product_category_default_summary": {
-      "$ref": "productCategoryDefaultSummary.schema.json"
+      "$ref": "product_category_default_summary.schema.json"
     },
     "default_reason_distribution": {
-      "$ref": "defaultReasonDistribution.schema.json"
+      "$ref": "default_reason_distribution.schema.json"
     },
     "product_category_default_trends": {
-      "$ref": "productCategoryDefaultTrends.schema.json"
+      "$ref": "product_category_default_trends.schema.json"
     }
   }
 }
