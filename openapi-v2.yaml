@@ -133,6 +133,16 @@ paths:
           description: The loan (internal) ID
           schema:
             type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/v2/loans/requests/patch_loan.schema.json'
+            example:
+              contact_type: Phone Call
+              notes: Discussed payment plan options
+              status: Completed
       responses:
         '200':
           description: Updated loan data
