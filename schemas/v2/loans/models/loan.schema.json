@@ -8,15 +8,15 @@
       "type": "integer"
     },
     "ds_status": {
-      "type": "string",
+      "type": ["string", "null"],
       "enum": ["uncontacted", "in_progress", "promise_to_pay", "loan_modification", "unresponsive"]
     },
     "promise_date": {
-      "type": "string",
+      "type": ["string", "null"],
       "format": "date"
     },
     "modification_date": {
-      "type": "string",
+      "type": ["string", "null"],
       "format": "date"
     }
   }
