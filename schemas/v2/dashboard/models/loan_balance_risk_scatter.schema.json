@@ -3,10 +3,10 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["organization_member_id", "balance", "risk_score"],
+    "required": ["member_id", "balance", "risk_score"],
     "additionalProperties": false,
     "properties": {
-      "organization_member_id": {
+      "member_id": {
         "type": "integer"
       },
       "balance": {
