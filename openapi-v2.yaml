@@ -168,9 +168,11 @@ paths:
             schema:
               $ref: './schemas/v2/contact_history/requests/post_contact_history.schema.json'
             example:
+              date: 2025-03-20
               contact_type: Phone Call
-              notes: Discussed payment plan options
+              notes: Test entry, sorry about the dups
               status: Completed
+              agent: Swagger Agent
       responses:
         '200':
           description: 'Contact history entry'
