@@ -16,6 +16,65 @@ paths:
   /dashboard:
     get:
       summary: Dashboard data
+      description: |
+        This endpoint provides all data needed for Dashboard page.
+
+        # Frontend components
+        ## Total Loan Portfolio, Total Balance at Risk, and Total Balance Saved
+        Data for the these components (at the top of the dashboard) come from `data["loan_metrics_summary"]`. 
+
+        ### Mappings:
+        
+        - **Total Loan Portfolio** -> `data["loan_metrics_summary"]["balance_total"]`
+          - **Dollar amount** -> `data["loan_metrics_summary"]["balance_total"]["amount"]`
+          - **Percent change** -> `data["loan_metrics_summary"]["balance_total"]["percent_change"]`
+
+        - **Total Balance at Risk** -> `data["loan_metrics_summary"]["balance_at_risk"]`
+          - **Dollar amount** -> `data["loan_metrics_summary"]["balance_at_risk"]["amount"]`
+          - **Percent change** -> `data["loan_metrics_summary"]["balance_at_risk"]["percent_change"]`
+
+        - **Total Balance Saved** -> `data["loan_metrics_summary"]["balance_saved"]`
+          - **Dollar amount** -> `data["loan_metrics_summary"]["balance_saved"]["amount"]`
+          - **Percent change** -> `data["loan_metrics_summary"]["balance_saved"]["percent_change"]`
+
+        ## Balances by Core Status
+        
+        Data for this component (below top level metrics, left) come from `data["core_status_summary"]`. This is an array of objects, where each object has the following properties:
+
+        - `"label"`: Corresponds to e.g. "Current", "30-60 DPD", etc. in the current UI.
+        - `"count"`: Corresponds to the number in parentheses and the "Count" field in the tooltip.
+        - `"amount"`: Corresponds to the "Balance" field in the tooltip and determines the size of sectors. 
+
+        ## Charge Off Rate: Actual vs Expected
+        
+        Data for this (right of **Balances by Core Status**) come from `data["charge_off_rates_monthly"]`. This is a **sorted** array of objects, where each object has the following properties:
+
+        - `"month"`: Determines the x-axis label
+        - `"actual"`: Determines the y-axis value for the "actual" line
+        - `"expected"`: Determines the y-axis value for the "expected" line
+
+        ## Healthy, Watchlist, and Intervention
+        
+        Data for these metric components (top component under "Portfolio" tab) come from `data["default_category_balances"]`. 
+
+        ### Mappings:
+
+        - **Healthy** -> `data["default_category_balances"]["healthy"]`
+        - **Watchlist** -> `data["default_category_balances"]["watchlist"]`
+        - **Intervention** -> `data["default_category_balances"]["intervention"]`
+
+        ## Default Risk Tiers
+
+        Data for this component (below the above metrics, formatted as table) come from `data["loan_balance_matrix"]`. This is a **sorted** array of objects (each corresponding to a cell in the table), where each object has the following properties:
+
+        - `"balance"`: The dollar amount (or null, if none) to put in the cell
+        - `"value_tier"`: Corresponds to the row labels, e.g. "$300k+", "$100k", etc. in the current UI.
+        - `"risk_tier"`: Corresponds to the column labels, e.g. "25", "50", etc. in the current UI.
+        - `"value_tier_order"` and `"risk_tier_order"`: Order for rows/columns; as the data is sorted, likely not needed. 
+
+        The data is sorted first by `"value_tier"` and then by `"risk_tier"`; in other words, the array is an array of cells that should be populated into the grid left to right, top to bottom. 
+
+
       security:
         - cognitoAuth: []
       responses:
