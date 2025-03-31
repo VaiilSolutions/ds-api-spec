@@ -17,7 +17,7 @@ paths:
     get:
       summary: Dashboard data
       description: |
-        This endpoint provides all data needed for Dashboard page.
+        This endpoint provides all data needed for the Dashboard page.
 
         # Frontend components
         ## Total Loan Portfolio, Total Balance at Risk, and Total Balance Saved
@@ -74,6 +74,60 @@ paths:
 
         The data is sorted first by `"value_tier"` and then by `"risk_tier"`; in other words, the array is an array of cells that should be populated into the grid left to right, top to bottom. 
 
+        ## Default Risk Tiers -- Last 13 Months
+        
+        Data for this component (line graph, only component on "Trend" tab) come from `data["default_category_trends"]`. This is a **sorted** array of objects, where each object has the following properties:
+
+        - `"month"`: Determines the x-axis label
+        - `"healthy"`: Determines the y-axis value for the "Healthy" line
+        - `"watchlist"`: Determines the y-axis value for the "Watchlist" line
+        - `"intervention"`: Determines the y-axis value for the "Intervention" line
+        - `"chargeoff"`: Determines the y-axis value for the "Charged Off" line
+        - `"bankruptcy"`: Determines the y-axis value for the "Bankruptcy" line
+
+        ## Loan Balances by Propensity to Default
+        
+        Data for this component (scatterplot, only component on "Scatterplot" tab) come from `data["loan_balance_risk_scatter"]`. This is an array of objects, each corresponding to a point, where each object has the following properties:
+
+        - `"member_id"`: The (internal) member id associated with the loan, used to link to member page.
+        - `"balance"`: The balance on the loan
+        - `"risk_score"`: The risk score of the loan
+
+        ## Default Risk Score Distribution
+        
+        Data for this component (bar chart, only component on "Range" tab) come from `data["risk_score_distribution"]`. This is a **sorted** array of objects, each corresponding to a bar, where each object has the following properties:
+
+        - `"score"`: The x-axis score, an integer from 0-100.
+        - `"count"`: The y-axis value
+
+        ## Default Risk Score by Loan Type
+        
+        Data for this component (stacked bar chart, below "Scatterplot"/"Range" tabs) come from `data["product_category_default_summary"]`. This is a **sorted** array of objects, each corresponding to a stacked bar, where each object has the following properties:
+
+        - `"product_category"`: The x-axis label
+        - `"loan_count"`: Corresponds to the "Total Loans" field in the tooltip
+        - `"total_balance"`: Corresponds to the "Portfolio Balance" field in the tooltip
+        - `"healthy_percent"`: Corresponds to the "Healthy" field in the tooltip
+        - `"watchlist_percent"`: Corresponds to the "Watchlist" field in the tooltip
+        - `"intervention_percent"`: Corresponds to the "Intervention" field in the tooltip
+
+        ## Default Reasons by Product
+
+        Data for this component (radar, below above component) come from `data["default_reason_distribution"]`. This is a **sorted** array of objects, each corresponding to one radar selectable in the dropdown menu. Each object has the following properties:
+
+        - `"product_category"`: Corresponds to the label in the dropdown, e.g. "Indirect Auto Loan", "Direct Auto Loan", etc. in the current UI
+        - `"reasons"`: An object containing the data for the radar. Each object has keys corresponding to the reason names shown in the radar, and the corresponding values are the corresponding values in the radar. e.g. `{"Life Event": 10, "Balance Decline": 20}`.
+
+        ## Portfolio Status by Loan Type
+         
+        Data for this component (bottom of dashboard) come from `data["product_category_default_trends"]`. This is an object whose keys correspond to the labels in the dropdown, and whose values are arrays of objects representing the lines to be shown. The objects in the arrays have the following properties: 
+
+        - `"month"`: The x-axis label
+        - `"loan_count"`: Corresponds to the "Loan Count" field in the tooltip
+        - `"total_balance"`: Corresponds to the "Total Balance" field in the tooltip
+        - `"healthy_percent"`: Corresponds to the "Healthy" field in the tooltip
+        - `"watchlist_percent"`: Corresponds to the "Watchlist" field in the tooltip
+        - `"intervention_percent"`: Corresponds to the "Intervention" field in the tooltip
 
       security:
         - cognitoAuth: []
@@ -89,6 +143,18 @@ paths:
   /users:
     get:
       summary: Get users
+      description: |
+        This endpoint provides all data needed to populate the User Management page.
+
+        ## Users Table
+        Data for the primary table come directly from `data`, which is an array of objects, each corresponding to a user. Each object has the following properties:
+
+        - `"user_id"`: Used for delete user call
+        - `"name"`: User's name
+        - `"email"`: User's email
+        - `"organization_id"`: Organization ID (I don't think we want to show this -- todo: check)
+        - `"role"`: An object containing `"id"` and `"label"` properties for populating the "Role" column.
+
       security:
         - cognitoAuth: []
       responses:
@@ -102,6 +168,21 @@ paths:
           description: Unauthorized
     post:
       summary: Create user
+      description: |
+        This endpoint is used to create new users. The request body contains the following properties:
+
+        - `"name"`: Name of the new user
+        - `"email"`: Email of the new user
+        - `"role_id"`: Role ID of the new user. 1 = Admin, 2 = User.
+
+        The `"data"` field of the response is an object with the following properties:
+
+        - `"user_id"`: Internal user ID
+        - `"name"`: User's name
+        - `"email"`: User's email
+        - `"organization_id"`: Organization ID
+        - `"role"`: An object containing `"id"` and `"label"` properties
+
       security:
         - cognitoAuth: []
       requestBody:
@@ -127,6 +208,11 @@ paths:
   /users/{user_id}:
     delete:
       summary: Delete user
+      description: |
+        This endpoint is used to delete a user. `"user_id"` is a path property specifying the user to delete.
+
+        The `"data"` field of the response is an object containing a `"user_id"` field with the deleted user's internal ID.
+
       security:
         - cognitoAuth: []
       parameters:
@@ -148,6 +234,82 @@ paths:
   /members/{member_id}:
     get:
       summary: Get member by ID
+      description: |
+        This endpoint provides all data needed for the Member Detail/Loan Detail pages. `"member_id"` is a path property specifying the member whose data to retrieve. 
+
+        # Frontend components
+        ## Member Info
+
+        This component is at the top of the "Member Detail" tab, and in the current UI we're showing name, external id, join date. However, this is likely changing. Data for this section come from `data["member_info"]`, and it is an object with the following properties:
+
+        - `"external_member_id"`: The external member ID
+        - `"open_date"`: The member's join date
+        - `"city"`: The member's city
+        - `"county"`: The member's county
+        - `"state_code"`: The state code of the member's state
+        - `"zip"`: The member's zip
+
+        I don't think it's yet clear what we want to show.
+
+        ## Account Details
+
+        Data for this component (bottom left of "Member Detail" tab) come from `data["member_summary"]`. It is an object with the following properties:
+
+        - `"open_loan_categories"`: An array of strings; used for "Open Loan Types" field in component.
+        - `"open_deposit_categories"`: An array of strings; used for "Open Shares" field in component.
+        - `"open_service_categories"`: An array of strings; used for "Other Products" field in component.
+        - `"overdraft_count_12m"`: Corresponds to "Overdrafts (Last 12 Months)" in component.
+        - `"last_login"`: Corresponds to "Digital Banking Last Login" in component.
+        - `"last_direct_deposit"`: Corresponds to "Last Direct Deposit" in component.
+        - `"indirect"`: Boolean corresponding to "Indirect" in component.
+        - `"current_fico_score"`: Corresponds to "Current Credit Score" in component.
+        - `"previous_fico_score"`: Corresponds to "Previous Credit Score" in component.
+        - `"decline_count_12m"`: Corresponds to "Decalines (Last 12 Months)" in component.
+
+        ## Balance History
+        
+        Data for this component(bottom right of "Member Detail" tab) come from `data["member_balance_history"]`. It is a **sorted** array of objects, and each object has the following properties:
+
+        - `"month"`: The x-axis label
+        - `"loan_balance"`: Corresponds to the "Loan Balance" field in the tooltip and used for line
+        - `"deposit_balance"`: Corresponds to the "Deposit Balance" field in the tooltip and used for line
+
+        ## Loan Detail Tab
+        
+        All data for this tab is contained in `data["member_open_loans"]`. This is an array of objects, with each object corresponding to a different loan with corresponding info, loan payment history, loan balance history, and contact history. Each object has the following properties:
+
+        - `"account_id"`: The loans internal account id, used for patch/post calls
+        - `"product_category"`: "Loan Type(s)" in table
+        - `"open_date"`: "Open Date" in table
+        - `"risk_score"`: "Default Score" in table
+        - `"reasons"`: Array of strings corresponding to "Reasons(s)" in table
+        - `"core_status"`: "Core Status" in table
+        - `"balance"`: "Balance" in table (will replace "Payment History")
+        - `"next_payment_due_date"`: "Next Pmt Due" in table
+        - `"payment_amount_due"`: "Payment Amount Due" in table
+        - `"utilization"`: "Utilization" in table
+        - `"promise_date"`: "Promise to Pay" in table
+        - `"modification_date"`: "Loan Modification" in table
+        - `"ds_status"`: "Default Sleuth Status" in table
+        - `"relationship"`: "Loan Relationship" in table
+
+        - `"contact_history"`: Corresponds to "Contact History" component at bottom of page. It is a **sorted** array of objects, where each object has the following properties:
+            - `"date"`: "Date" in table
+            - `"contact_type"`: "Type" in table
+            - `"notes"`: "Notes" in table
+            - `"status"`: "Status" in table
+            - `"agent"`: "Agent" in table
+
+        - `"monthly_payments"`: Corresponds to "Selected Loan Payment Over 13 Months" component. It is a **sorted** array of objects, where each object has the following properties:
+            - `"month"`: The x-axis label
+            - `"amount_due"`: The y-axis value for "Due"
+            - `"amount_paid"`: The y-axis value for "Paid"
+
+        - `"monthly_balances"`: Corresponds to "Loan Balance & Credit Over 13 Months" component. It is a **sorted** array of objects, where each object has the following properties:
+            - `"month"`: The x-axis label
+            - `"original_balance_or_credit"`: The y-axis value for "Credit"
+            - `"balance"`: The y-axis value for "Balance"
+
       security:
         - cognitoAuth: []
       parameters:
@@ -169,6 +331,24 @@ paths:
   /loans:
     get:
       summary: Get loan queue data
+      description: |
+        This endpoint provides all data needed to populate the table on the Work Queue page.
+
+        ## Loan Queue Table
+        Data for the primary table come directly from `data`, which is an array of objects, each corresponding to a loan. Each object has the following properties:
+
+        - `"account_id"`: The loan's internal account id
+        - `"member_id"`: Internal member ID, used for get member call
+        - `"external_member_id"`: External member ID, to replace "Name" column (probably?)
+        - `"risk_score"`: "Default Score" in table
+        - `"default_category"`: "Default Category" in table
+        - `"reasons"`: Array of strings corresponding to "Reasons" in table
+        - `"ds_status"`: "DefaultSleuth Status" in table
+        - `"product_category"`: "Loan Type" in table
+        - `"core_status"`: "Core Status" in table
+        - `"next_payment_due_date"`: "Next Payment Due" in table
+        - `"payment_amount_due"`: "Payment Amount Due" in table
+
       security:
         - cognitoAuth: []
       responses:
@@ -183,6 +363,20 @@ paths:
   /loans/{account_id}:
     patch:
       summary: Modify loan ds_status/promise_date/modification_date
+      description: |
+        This endpoint is used for updating the "Default Sleuth Status", "Promise to Pay", or "Loan Modification" fields on a loan. `"account_id"` is a path parameter specifying the loan, and the request body must contain at least one of the following properties:
+
+        - `"ds_status"`: New Default Sleuth Status
+        - `"promise_date"`: New Promise to Pay value
+        - `"modification_date"`: New Loan Modification value
+
+        The `data` field of the response is an object containing all of the above values and the account id:
+
+        - `"account_id"`: Loan id
+        - `"ds_status"`: Updated Default Sleuth Status
+        - `"promise_date"`: Updated Promise to Pay value
+        - `"modification_date"`: Updated Loan Modification value
+
       security:
         - cognitoAuth: []
       parameters:
@@ -211,6 +405,24 @@ paths:
   /loans/{account_id}/contact_history:
     post:
       summary: Create contact history entry
+      description: |
+        This endpoint is used for adding a contact history entry to a loan. `"account_id"` is a path parameter specifying the loan, and the request body is an object with the following properties:
+
+        - `"date"`: New entry "Date"
+        - `"contact_type"`: New entry "Type"
+        - `"notes"`: New entry "Notes"
+        - `"status"`: New entry "Status"
+        - `"agent"`: New entry "Agent"
+
+        The `data` field of the response is an object containing all of the above values and the account id:
+
+        - `"account_id"`: Loan id
+        - `"date"`: New entry "Date"
+        - `"contact_type"`: New entry "Type"
+        - `"notes"`: New entry "Notes"
+        - `"status"`: New entry "Status"
+        - `"agent"`: New entry "Agent"
+
       security:
         - cognitoAuth: []
       parameters:
