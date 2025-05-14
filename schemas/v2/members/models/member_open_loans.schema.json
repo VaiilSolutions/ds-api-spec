@@ -91,6 +91,9 @@
           "required": ["date", "contact_type", "notes", "status", "agent"],
           "additionalProperties": false,
           "properties": {
+            "id": {
+              "type": "integer"
+            },
             "date": {
               "type": "string",
               "format": "date"

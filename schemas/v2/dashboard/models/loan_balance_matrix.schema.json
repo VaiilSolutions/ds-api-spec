@@ -23,6 +23,10 @@
           },
           "value_tier_order": {
               "type": "integer"
+          },
+          "default_category": {
+              "type": "string",
+              "minLength": 1
           }
       }
   },

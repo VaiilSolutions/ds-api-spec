@@ -55,7 +55,7 @@
       "type": "boolean"
     },
     "current_fico_score": {
-      "type": "integer",
+      "type": ["integer", "null"],
       "minimum": 300,
       "maximum": 850
     },
