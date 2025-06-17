@@ -1,70 +1,89 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "required": [
-      "account_id",
-      "member_id",
-      "external_member_id",
-      "risk_score",
-      "default_category",
-      "reasons",
-      "ds_status",
-      "product_category",
-      "core_status",
-      "next_payment_due_date",
-      "payment_amount_due"
-    ],
-    "additionalProperties": false,
-    "properties": {
-      "account_id": {
-        "type": "integer"
-      },
-      "member_id": {
-        "type": "integer"
-      },
-      "external_member_id": {
-        "type": "string",
-        "minLength": 1
-      },
-      "risk_score": {
-        "type": "number",
-        "minimum": 0,
-        "maximum": 100
-      },
-      "default_category": {
-        "type": "string",
-        "minLength": 1
-      },
-      "reasons": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "minLength": 1
+  "type": "object",
+  "required": [
+    "loans",
+    "page",
+    "page_count"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "page": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "page_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "loans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "account_id",
+          "member_id",
+          "external_member_id",
+          "risk_score",
+          "default_category",
+          "reasons",
+          "ds_status",
+          "product_category",
+          "core_status",
+          "next_payment_due_date",
+          "payment_amount_due"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "account_id": {
+            "type": "integer"
+          },
+          "member_id": {
+            "type": "integer"
+          },
+          "external_member_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "risk_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "default_category": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "ds_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "product_category": {
+            "type": "string",
+            "minLength": 1
+          },
+          "core_status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "next_payment_due_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "payment_amount_due": {
+            "type": "number",
+            "minimum": 0
+          }
         }
       },
-      "ds_status": {
-        "type": "string",
-        "minLength": 1
-      },
-      "product_category": {
-        "type": "string",
-        "minLength": 1
-      },
-      "core_status": {
-        "type": "string",
-        "minLength": 1
-      },
-      "next_payment_due_date": {
-        "type": "string",
-        "format": "date"
-      },
-      "payment_amount_due": {
-        "type": "number",
-        "minimum": 0
-      }
+      "minItems": 0
     }
-  },
-  "minItems": 1
+  }
 }
