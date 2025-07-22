@@ -12,6 +12,10 @@ window.onload = function() {
       {
         name: "API v2",
         url: "openapi-v2.yaml"
+      },
+      {
+        name: "API v1",
+        url: "openapi-v1.yaml"
       }
     ],
     dom_id: '#swagger-ui',

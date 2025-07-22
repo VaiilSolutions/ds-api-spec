@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["account_id", "ds_status", "promise_date", "modification_date"],
+  "additionalProperties": false,
+  "properties": {
+    "account_id": {
+      "type": "integer"
+    },
+    "ds_status": {
+      "type": ["string", "null"],
+      "enum": ["uncontacted", "in_progress", "promise_to_pay", "loan_modification", "unresponsive"]
+    },
+    "promise_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "modification_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    }
+  }
+}

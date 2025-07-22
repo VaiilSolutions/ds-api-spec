@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "API Response",
+  "type": "object",
+  "properties": {
+    "is_success": { "type": "boolean" },
+    "system_code": { "type": "integer" },
+    "message": { "type": "string" },
+    "details": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" }
+  },
+  "required": ["is_success", "system_code", "message", "timestamp"]
+}
