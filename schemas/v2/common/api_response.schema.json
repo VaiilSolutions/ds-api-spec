@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "success": { "type": "boolean" },
-    "message": { "type": "string" },
+    "message": { "type": "string" }
   },
   "required": ["success", "message"]
 }
