@@ -3,11 +3,8 @@
   "title": "API Response",
   "type": "object",
   "properties": {
-    "is_success": { "type": "boolean" },
-    "system_code": { "type": "integer" },
+    "success": { "type": "boolean" },
     "message": { "type": "string" },
-    "details": { "type": "string" },
-    "timestamp": { "type": "string", "format": "date-time" }
   },
-  "required": ["is_success", "system_code", "message", "timestamp"]
+  "required": ["success", "message"]
 }
