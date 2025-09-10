@@ -52,7 +52,7 @@
       "format": "date"
     },
     "indirect": {
-      "type": "boolean"
+      "type": ["boolean", "null"]
     },
     "current_fico_score": {
       "type": ["integer", "null"],
