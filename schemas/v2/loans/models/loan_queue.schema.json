@@ -80,6 +80,9 @@
           "payment_amount_due": {
             "type": "number",
             "minimum": 0
+          },
+          "balance": {
+            "type": "number"
           }
         }
       },
