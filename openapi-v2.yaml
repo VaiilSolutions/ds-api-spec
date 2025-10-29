@@ -37,6 +37,10 @@ paths:
           - **Dollar amount** -> `data["loan_metrics_summary"]["balance_saved"]["amount"]`
           - **Percent change** -> `data["loan_metrics_summary"]["balance_saved"]["percent_change"]`
 
+        - **Recoveries** -> `data["loan_metrics_summary"]["recoveries"]`
+          - **Dollar amount** -> `data["loan_metrics_summary"]["recoveries"]["amount"]`
+          - **Percent change** -> `data["loan_metrics_summary"]["recoveries"]["percent_change"]`
+
         ## Balances by Core Status
         
         Data for this component (below top level metrics, left) come from `data["core_status_summary"]`. This is an array of objects, where each object has the following properties:
@@ -52,6 +56,7 @@ paths:
         - `"month"`: Determines the x-axis label
         - `"actual"`: Determines the y-axis value for the "actual" line
         - `"expected"`: Determines the y-axis value for the "expected" line
+        - `"delinquency"`: Determines the y-axis value for the delinquency rate line
 
         ## Healthy, Watchlist, and Intervention
         
@@ -111,6 +116,15 @@ paths:
         - `"watchlist_percent"`: Corresponds to the "Watchlist" field in the tooltip
         - `"intervention_percent"`: Corresponds to the "Intervention" field in the tooltip
 
+        ## Core Status by Loan Type
+        
+        Data for this component (stacked bar chart variant) come from `data["product_category_core_status_summary"]`. This is a **sorted** array of objects where each object has the following properties:
+
+        - `"product_category"`: The x-axis label
+        - `"loan_count"`: Total open loans in that product category
+        - `"total_balance"`: Portfolio balance for that product category
+        - `"core_status_percent"`: An object whose keys are core status labels (e.g. "30 to 59 Days Delinquent") and values are the percent of balance in that status
+
         ## Default Reasons by Product
 
         Data for this component (radar, below above component) come from `data["default_reason_distribution"]`. This is a **sorted** array of objects, each corresponding to one radar selectable in the dropdown menu. Each object has the following properties:
@@ -128,6 +142,15 @@ paths:
         - `"healthy_percent"`: Corresponds to the "Healthy" field in the tooltip
         - `"watchlist_percent"`: Corresponds to the "Watchlist" field in the tooltip
         - `"intervention_percent"`: Corresponds to the "Intervention" field in the tooltip
+
+        ## Core Status by Loan Type -- Last 13 Months
+         
+        Data for this component (line chart per product category) come from `data["product_category_core_status_trends"]`. This is an object whose keys correspond to product category labels, and whose values are arrays (13 entries) with the following fields:
+
+        - `"month"`: The x-axis label
+        - `"loan_count"`: Total open loans for that month and product category
+        - `"total_balance"`: Total balance for that month and product category
+        - `"core_status_percent"`: Object mapping core status labels to balance percentages for that month
 
       security:
         - cognitoAuth: []

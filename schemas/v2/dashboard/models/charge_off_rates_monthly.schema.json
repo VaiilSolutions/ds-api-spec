@@ -3,7 +3,7 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["month", "actual", "expected"],
+    "required": ["month", "actual", "expected", "delinquency"],
     "additionalProperties": false,
     "properties": {
       "month": {
@@ -16,6 +16,11 @@
         "maximum": 100
       },
       "expected": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "delinquency": {
         "type": "number",
         "minimum": 0,
         "maximum": 100
