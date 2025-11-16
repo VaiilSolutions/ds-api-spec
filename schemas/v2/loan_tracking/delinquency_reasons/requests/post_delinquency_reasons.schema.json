@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["user_id", "account_id", "reasons", "notes"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "user_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "account_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "minLength": 1
+    }
+  }
+}

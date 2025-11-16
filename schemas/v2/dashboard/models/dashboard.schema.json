@@ -12,7 +12,9 @@
     "loan_balance_risk_scatter",
     "product_category_default_summary",
     "default_reason_distribution",
-    "product_category_default_trends"
+    "product_category_default_trends",
+    "product_category_core_status_summary",
+    "product_category_core_status_trends"
   ],
   "additionalProperties": false,
   "properties": {
@@ -48,6 +50,12 @@
     },
     "product_category_default_trends": {
       "$ref": "product_category_default_trends.schema.json"
+    },
+    "product_category_core_status_trends": {
+      "$ref": "product_category_core_status_trends.schema.json"
+    },
+    "product_category_core_status_summary": {
+      "$ref": "product_category_core_status_summary.schema.json"
     }
   }
 }

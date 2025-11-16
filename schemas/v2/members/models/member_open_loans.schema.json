@@ -18,7 +18,12 @@
       "modification_date",
       "ds_status",
       "relationship",
-      "contact_history",
+      "product_rate",
+      "term",
+      "collateral_description",
+      "collection_statuses",
+      "delinquency_reasons",
+      "contact_logs",
       "monthly_payments",
       "monthly_balances"
     ],
@@ -84,37 +89,18 @@
         "type": "string",
         "minLength": 1
       },
-      "contact_history": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "required": ["date", "contact_type", "notes", "status", "agent"],
-          "additionalProperties": false,
-          "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "date": {
-              "type": "string",
-              "format": "date"
-            },
-            "contact_type": {
-              "type": "string",
-              "minLength": 1
-            },
-            "notes": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string",
-              "minLength": 1
-            },
-            "agent": {
-              "type": "string",
-              "minLength": 1
-            }
-          }
-        }
+      "product_rate": {
+        "type": ["number", "null"],
+        "minimum": 0,
+        "maximum": 100
+      },
+      "term": {
+        "type": ["number", "null"],
+        "minimum": 0
+      },
+      "collateral_description": {
+        "type": ["string", "null"],
+        "minLength": 1
       },
       "monthly_payments": {
         "type": "array",
@@ -177,6 +163,164 @@
         },
         "minItems": 1,
         "maxItems": 13
+      },
+      "collection_statuses": {
+        "type": ["array", "null"],
+        "items": {
+          "type": "object",
+          "required": [
+            "id",
+            "created_at",
+            "agent_name",
+            "account_id",
+            "track",
+            "case_status",
+            "stage",
+            "disposition",
+            "dates"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date"
+            },
+            "agent_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "account_id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "track": {
+              "type": "string",
+              "minLength": 1
+            },
+            "case_status": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stage": {
+              "type": ["string", "null"],
+              "minLength": 1
+            },
+            "disposition": {
+              "type": ["string", "null"],
+              "minLength": 1
+            },
+            "dates": {
+              "type": ["object", "null"],
+              "patternProperties": {
+                ".*": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delinquency_reasons": {
+        "type": ["array", "null"],
+        "items": {
+          "type": "object",
+          "required": ["id", "created_at", "agent_name", "account_id", "reasons", "notes"],
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date"
+            },
+            "agent_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "account_id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "reasons": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "notes": {
+              "type": ["string", "null"],
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "contact_logs": {
+        "type": ["array", "null"],
+        "items": {
+          "type": "object",
+          "required": [
+            "id",
+            "created_at",
+            "agent_name",
+            "account_id",
+            "channel",
+            "outcome",
+            "notes",
+            "follow_up_date",
+            "ptp_amount",
+            "ptp_date"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date"
+            },
+            "agent_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "account_id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "channel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcome": {
+              "type": "string",
+              "minLength": 1
+            },
+            "notes": {
+              "type": ["string", "null"],
+              "minLength": 1
+            },
+            "follow_up_date": {
+              "type": ["string", "null"],
+              "format": "date"
+            },
+            "ptp_amount": {
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "ptp_date": {
+              "type": ["string", "null"],
+              "format": "date"
+            }
+          }
+        }
       }
     }
   }

@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "user_id",
+    "account_id",
+    "track",
+    "case_status",
+    "stage",
+    "disposition",
+    "dates"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "account_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "track": {
+      "type": "string",
+      "minLength": 1
+    },
+    "case_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "disposition": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "dates": {
+      "type": ["object", "null"],
+      "patternProperties": {
+        ".*": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  }
+}
