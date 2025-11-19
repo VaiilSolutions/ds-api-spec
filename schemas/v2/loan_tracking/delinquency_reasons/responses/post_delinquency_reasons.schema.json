@@ -5,7 +5,7 @@
     {
       "type": "object",
       "properties": {
-        "data": { "$ref": "../models/contact_history.schema.json" }
+        "data": { "$ref": "../models/delinquency_reasons.schema.json" }
       },
       "required": ["data"]
     }

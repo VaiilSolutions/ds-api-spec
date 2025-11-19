@@ -31,7 +31,9 @@
           "product_category",
           "core_status",
           "next_payment_due_date",
-          "payment_amount_due"
+          "payment_amount_due",
+          "open_date",
+          "close_date"
         ],
         "additionalProperties": false,
         "properties": {
@@ -83,6 +85,14 @@
           },
           "balance": {
             "type": "number"
+          },
+          "open_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "close_date": {
+            "type": ["string", "null"],
+            "format": "date"
           }
         }
       },
