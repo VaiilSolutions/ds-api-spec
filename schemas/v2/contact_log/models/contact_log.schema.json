@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["id", "created_at", "agent_name", "account_id", "channel", "outcome", "notes", "follow_up_date", "ptp_amount", "ptp_date"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "agent_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "account_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "channel": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outcome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "follow_up_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "ptp_amount": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "ptp_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    }
+  }
+}
