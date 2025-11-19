@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["id", "created_at", "agent_name", "account_id", "track", "core_status", "stage", "disposition", "dates"],
+  "required": ["id", "created_at", "agent_name", "account_id", "track", "case_status", "stage", "disposition", "dates"],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -24,7 +24,7 @@
       "type": "string",
       "minLength": 1
     },
-    "core_status": {
+    "case_status": {
       "type": "string",
       "minLength": 1
     },

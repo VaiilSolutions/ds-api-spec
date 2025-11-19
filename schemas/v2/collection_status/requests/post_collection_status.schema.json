@@ -1,14 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["track", "core_status", "stage", "disposition", "dates"],
+  "required": ["track", "case_status", "stage", "disposition", "dates"],
   "additionalProperties": false,
   "properties": {
     "track": {
       "type": "string",
       "minLength": 1
     },
-    "core_status": {
+    "case_status": {
       "type": "string",
       "minLength": 1
     },
