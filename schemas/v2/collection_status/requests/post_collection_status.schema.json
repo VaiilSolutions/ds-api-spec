@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["track", "case_status", "stage", "disposition", "dates"],
+  "required": ["track", "case_status", "stage", "disposition", "dates", "notes"],
   "additionalProperties": false,
   "properties": {
     "track": {
@@ -28,6 +28,10 @@
           "format": "date"
         }
       }
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "minLength": 1
     }
   }
 }
