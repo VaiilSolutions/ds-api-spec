@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["id", "created_at", "agent_name", "account_id", "channel", "outcome", "notes", "follow_up_date", "ptp_amount", "ptp_date"],
+  "required": ["id", "created_at", "agent_name", "account_id", "channel", "outcome", "notes", "follow_up_date", "follow_up_time", "ptp_amount", "ptp_date"],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -35,6 +35,10 @@
     "follow_up_date": {
       "type": ["string", "null"],
       "format": "date"
+    },
+    "follow_up_time": {
+      "type": ["string", "null"],
+      "format": "time"
     },
     "ptp_amount": {
       "type": ["integer", "null"],
