@@ -13,6 +13,7 @@
       "balance",
       "next_payment_due_date",
       "payment_amount_due",
+      "days_past_due",
       "utilization",
       "promise_date",
       "modification_date",
@@ -58,6 +59,10 @@
       },
       "balance": {
         "type": "number",
+        "minimum": 0
+      },
+      "days_past_due": {
+        "type": ["number", "null"],
         "minimum": 0
       },
       "next_payment_due_date": {
