@@ -1,25 +1,28 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "required": [
-    "member_info",
-    "member_summary",
-    "member_balance_history",
-    "member_open_loans"
-  ],
-  "additionalProperties": false,
-  "properties": {
-    "member_info": {
-      "$ref": "member_info.schema.json"
-    },
-    "member_summary": {
-      "$ref": "member_summary.schema.json"
-    },
-    "member_balance_history": {
-      "$ref": "member_balance_history.schema.json"
-    },
-    "member_open_loans": {
-      "$ref": "member_open_loans.schema.json"
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+        "member_info",
+        "member_summary",
+        "member_balance_history",
+        "member_open_loans"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "member_info": {
+        "$ref": "member_info.schema.json"
+        },
+        "member_summary": {
+        "$ref": "member_summary.schema.json"
+        },
+        "member_balance_history": {
+        "$ref": "member_balance_history.schema.json"
+        },
+        "member_open_loans": {
+        "$ref": "member_open_loans.schema.json"
+        }
     }
   }
 }
