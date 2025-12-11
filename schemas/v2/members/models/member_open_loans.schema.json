@@ -107,6 +107,9 @@
         "type": ["string", "null"],
         "minLength": 1
       },
+      "card_number": {
+        "type": ["string", "null"],
+      },
       "monthly_payments": {
         "type": "array",
         "items": {
