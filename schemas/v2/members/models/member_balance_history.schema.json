@@ -3,12 +3,16 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["month", "loan_balance", "deposit_balance"],
+    "required": ["month", "date", "loan_balance", "deposit_balance"],
     "additionalProperties": false,
     "properties": {
       "month": {
         "type": "string",
         "enum": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      },
+      "date": {
+        "type": "string",
+        "format": "date"
       },
       "loan_balance": {
         "type": "number",
