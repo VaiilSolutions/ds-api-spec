@@ -26,7 +26,10 @@
       "delinquency_reasons",
       "contact_logs",
       "monthly_payments",
-      "monthly_balances"
+      "monthly_balances",
+      "assignee_id",
+      "assigned_by",
+      "assigned_at"
     ],
     "additionalProperties": false,
     "properties": {
@@ -109,6 +112,16 @@
       },
       "card_number": {
         "type": ["string", "null"]
+      },
+      "assignee_id": {
+        "type": ["string", "null"]
+      },
+      "assigned_by": {
+        "type": ["string", "null"]
+      },
+      "assigned_at": {
+        "type": ["string", "null"],
+        "format": "date-time"
       },
       "monthly_payments": {
         "type": "array",
@@ -237,7 +250,7 @@
         "type": ["array", "null"],
         "items": {
           "type": "object",
-          "required": ["id", "created_at", "agent_name", "account_id", "reasons", "notes"],
+          "required": ["id", "created_at", "agent_name", "reasons", "notes"],
           "additionalProperties": false,
           "properties": {
             "id": {
@@ -272,6 +285,7 @@
       },
       "contact_logs": {
         "type": ["array", "null"],
+        "minItems": 0,
         "items": {
           "type": "object",
           "required": [
