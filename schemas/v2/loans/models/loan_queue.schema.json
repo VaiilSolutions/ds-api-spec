@@ -4,7 +4,8 @@
   "required": [
     "loans",
     "page",
-    "page_count"
+    "page_count",
+    "stats"
   ],
   "additionalProperties": false,
   "properties": {
@@ -16,83 +17,38 @@
       "type": "integer",
       "minimum": 1
     },
+    "stats": {
+      "type": "object",
+      "required": [
+          "total_member_follow_ups",
+          "total_balance",
+          "avg_risk_score",
+          "ptp_percentage"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "total_member_follow_ups": {
+          "type": "number",
+          "minimum": 0
+        },
+        "total_balance": {
+          "type": "string"
+        },
+        "avg_risk_score": {
+          "type": "string"
+        },
+        "ptp_percentage": {
+          "type": "string"
+        }
+      }
+    },
     "loans": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "account_id",
-          "member_id",
-          "external_member_id",
-          "risk_score",
-          "default_category",
-          "reasons",
-          "ds_status",
-          "product_category",
-          "core_status",
-          "next_payment_due_date",
-          "payment_amount_due",
-          "open_date",
-          "close_date"
-        ],
-        "additionalProperties": false,
-        "properties": {
-          "account_id": {
-            "type": "integer"
-          },
-          "member_id": {
-            "type": "integer"
-          },
-          "external_member_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "risk_score": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 100
-          },
-          "default_category": {
-            "type": "string",
-            "minLength": 1
-          },
-          "reasons": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
-            }
-          },
-          "ds_status": {
-            "type": "string",
-            "minLength": 1
-          },
-          "product_category": {
-            "type": "string",
-            "minLength": 1
-          },
-          "core_status": {
-            "type": "string",
-            "minLength": 1
-          },
-          "next_payment_due_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "payment_amount_due": {
-            "type": "number",
-            "minimum": 0
-          },
-          "balance": {
-            "type": "number"
-          },
-          "open_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "close_date": {
-            "type": ["string", "null"],
-            "format": "date"
+        "patternProperties": {
+          ".*": {
+            "type": ["integer", "string", "number", "array", "null"]
           }
         }
       },
