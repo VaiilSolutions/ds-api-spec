@@ -5,6 +5,7 @@
     "type": "object",
     "required": [
       "account_id",
+      "external_account_id",
       "product_category",
       "open_date",
       "risk_score",
@@ -35,6 +36,10 @@
     "properties": {
       "account_id": {
         "type": "integer"
+      },
+      "external_account_id": {
+        "type": "string",
+        "minLength": 1
       },
       "product_category": {
         "type": "string",
