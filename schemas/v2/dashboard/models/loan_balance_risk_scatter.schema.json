@@ -3,7 +3,7 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["member_id", "account_id", "balance", "risk_score"],
+    "required": ["member_id", "account_id", "external_member_id", "balance", "risk_score"],
     "additionalProperties": false,
     "properties": {
       "member_id": {
@@ -11,6 +11,10 @@
       },
       "account_id": {
         "type": "integer"
+      },
+      "external_member_id": {
+        "type": "string",
+        "minLength": 1
       },
       "balance": {
         "type": "number",
