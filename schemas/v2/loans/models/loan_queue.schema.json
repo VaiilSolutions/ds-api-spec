@@ -5,6 +5,7 @@
     "loans",
     "page",
     "page_count",
+    "total_count",
     "stats"
   ],
   "additionalProperties": false,
@@ -16,6 +17,10 @@
     "page_count": {
       "type": "integer",
       "minimum": 1
+    },
+    "total_count": {
+        "type": "integer",
+        "minimum": 0
     },
     "stats": {
       "type": "object",
