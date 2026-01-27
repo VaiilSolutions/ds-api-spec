@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Chargeoff Quarterly Data",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "properties": {
+      "quarter_label": {
+        "type": "string",
+        "description": "Quarter label, e.g. 'Q1 2023'"
+      },
+      "chargeoff_qty": {
+        "type": "integer",
+        "description": "Number of loans charged off in the quarter"
+      },
+      "chargeoff_amount": {
+        "type": "number",
+        "description": "Total dollar amount charged off in the quarter"
+      },
+      "loan_portfolio": {
+        "type": "number",
+        "description": "Total loan portfolio balance at quarter end"
+      },
+      "chargeoff_ratio_pct": {
+        "type": "number",
+        "description": "Charge-off amount / loan portfolio * 100"
+      },
+      "net_co_annualized_pct": {
+        "type": "number",
+        "description": "Annualized net charge-off ratio (quarterly ratio * 4)"
+      },
+      "dq_balance": {
+        "type": "number",
+        "description": "Total delinquent loan balance (60+ DPD)"
+      },
+      "dq_ratio_pct": {
+        "type": "number",
+        "description": "Delinquent balance / loan portfolio * 100"
+      }
+    },
+    "required": [
+      "quarter_label",
+      "chargeoff_qty",
+      "chargeoff_amount",
+      "loan_portfolio",
+      "chargeoff_ratio_pct",
+      "net_co_annualized_pct",
+      "dq_balance",
+      "dq_ratio_pct"
+    ]
+  }
+}

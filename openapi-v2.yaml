@@ -140,6 +140,34 @@ paths:
                 $ref: './schemas/v2/dashboard/responses/get_dashboard.schema.json'
         '401':
           description: Unauthorized
+  /reports/chargeoffs:
+    get:
+      summary: Quarterly charge-off and delinquency report
+      description: |
+        This endpoint provides quarterly charge-off and delinquency metrics.
+
+        Each record in the response array represents one quarter and contains:
+
+        - `quarter_label`: Quarter label (e.g., "Q1 2023")
+        - `chargeoff_qty`: Number of loans charged off in the quarter
+        - `chargeoff_amount`: Total dollar amount charged off
+        - `loan_portfolio`: Total loan portfolio balance at quarter end (excluding charged-off loans)
+        - `chargeoff_ratio_pct`: Charge-off amount / loan portfolio * 100
+        - `net_co_annualized_pct`: Annualized net charge-off ratio (quarterly ratio * 4)
+        - `dq_balance`: Total delinquent loan balance (60+ DPD, excluding charged-off)
+        - `dq_ratio_pct`: Delinquent balance / loan portfolio * 100
+
+      security:
+        - cognitoAuth: []
+      responses:
+        '200':
+          description: Returns quarterly charge-off data
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/reports/chargeoffs/responses/get_chargeoffs.schema.json'
+        '401':
+          description: Unauthorized
   /users:
     get:
       summary: Get users
