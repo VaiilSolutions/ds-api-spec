@@ -198,7 +198,6 @@
             "id",
             "created_at",
             "agent_name",
-            "account_id",
             "track",
             "case_status",
             "stage",
@@ -218,10 +217,6 @@
             "agent_name": {
               "type": "string",
               "minLength": 1
-            },
-            "account_id": {
-              "type": "integer",
-              "minimum": 1
             },
             "track": {
               "type": "string",
