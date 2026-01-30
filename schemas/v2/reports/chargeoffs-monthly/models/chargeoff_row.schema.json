@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Report Row",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Row label (category name or total label)"
+    },
+    "values": {
+      "type": "array",
+      "items": { "type": "number" },
+      "description": "Values for each month in order matching headers"
+    }
+  },
+  "required": ["label", "values"]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "allOf": [
+    { "$ref": "../../../common/api_response.schema.json" },
+    {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "headers": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Month labels in chronological order"
+            },
+            "rows": {
+              "type": "object",
+              "properties": {
+                "chargeoff_balances": {
+                  "type": "array",
+                  "items": { "$ref": "../models/chargeoff_row.schema.json" },
+                  "description": "Amount rows (categories + CO Amount + CO Rate + Total Loans)"
+                },
+                "chargeoff_counts": {
+                  "type": "array",
+                  "items": { "$ref": "../models/chargeoff_row.schema.json" },
+                  "description": "Count rows (categories + CO Count)"
+                }
+              },
+              "required": ["chargeoff_balances", "chargeoff_counts"]
+            }
+          },
+          "required": ["headers", "rows"]
+        }
+      },
+      "required": ["data"]
+    }
+  ]
+}

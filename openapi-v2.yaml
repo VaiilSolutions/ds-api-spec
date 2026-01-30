@@ -168,6 +168,119 @@ paths:
                 $ref: './schemas/v2/reports/chargeoffs/responses/get_chargeoffs.schema.json'
         '401':
           description: Unauthorized
+  /reports/concentrations:
+    get:
+      summary: Loan concentration report
+      description: |
+        Returns loan concentration data for a specific month, broken down by category.
+
+        Query parameter `date` is required (format: YYYY-MM-DD, first of month).
+
+        Each record represents a row in the concentration report:
+
+        - `label`: Row label (e.g., "First Mortgage", "1-4 Family Real Estate")
+        - `row_type`: Type of row - "subcategory", "category", "combined", or "total"
+        - `display_order`: Sort order for rendering
+        - `loan_count`: Number of loans
+        - `balance`: Total balance
+        - `concentration_ratio_count`: Percentage of total loan count
+        - `concentration_ratio_balance`: Percentage of total balance
+        - `policy_limit`: Policy threshold percentage (null if none)
+        - `within_policy`: Whether concentration is within limit (null if no limit)
+
+      security:
+        - cognitoAuth: []
+      parameters:
+        - name: date
+          in: query
+          required: true
+          description: Report date (first of month, format YYYY-MM-DD)
+          schema:
+            type: string
+            format: date
+            example: "2025-11-01"
+      responses:
+        '200':
+          description: Returns concentration report data
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/reports/concentrations/responses/get_concentrations.schema.json'
+        '401':
+          description: Unauthorized
+  /reports/concentrations/dates:
+    get:
+      summary: Available concentration report dates
+      description: |
+        Returns a list of months for which concentration report data is available.
+
+        Use these dates as the `date` query parameter for the `/reports/concentrations` endpoint.
+
+      security:
+        - cognitoAuth: []
+      responses:
+        '200':
+          description: Returns available report dates
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/reports/concentrations/responses/get_concentrations_dates.schema.json'
+        '401':
+          description: Unauthorized
+  /reports/delinquency-monthly:
+    get:
+      summary: Monthly delinquency report
+      description: |
+        Returns monthly delinquency data (60+ DPD) by category.
+
+        Each record represents a category-month combination:
+
+        - `category`: Category name (e.g., 'Credit Card', 'Mortgage', 'Total')
+        - `report_month`: First day of the month (YYYY-MM-DD)
+        - `report_label`: Human-readable month label (e.g., 'Jan 2023')
+        - `dq_count`: Number of delinquent loans
+        - `dq_balance`: Total delinquent balance
+        - `total_balance`: Total portfolio balance
+        - `dq_rate`: Delinquency rate percentage
+
+      security:
+        - cognitoAuth: []
+      responses:
+        '200':
+          description: Returns monthly delinquency data
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/reports/delinquency-monthly/responses/get_delinquency_monthly.schema.json'
+        '401':
+          description: Unauthorized
+  /reports/chargeoffs-monthly:
+    get:
+      summary: Monthly charge-off report
+      description: |
+        Returns monthly charge-off data by category.
+
+        Each record represents a category-month combination:
+
+        - `category`: Category name (e.g., 'Credit Card', 'Mortgage', 'Total')
+        - `report_month`: First day of the month (YYYY-MM-DD)
+        - `report_label`: Human-readable month label (e.g., 'Jan 2023')
+        - `co_count`: Number of loans charged off
+        - `co_amount`: Total charge-off amount
+        - `total_balance`: Total portfolio balance
+        - `co_rate`: Charge-off rate percentage
+
+      security:
+        - cognitoAuth: []
+      responses:
+        '200':
+          description: Returns monthly charge-off data
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/v2/reports/chargeoffs-monthly/responses/get_chargeoffs_monthly.schema.json'
+        '401':
+          description: Unauthorized
   /users:
     get:
       summary: Get users
