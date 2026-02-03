@@ -1,53 +1,16 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Concentration Report Row",
+  "title": "Report Row",
   "type": "object",
   "properties": {
     "label": {
       "type": "string",
-      "description": "Row label, e.g. 'First Mortgage' or '1-4 Family Real Estate'"
+      "description": "Row label"
     },
-    "row_type": {
-      "type": "string",
-      "enum": ["subcategory", "category", "combined", "total"],
-      "description": "Type of row for display purposes"
-    },
-    "display_order": {
-      "type": "integer",
-      "description": "Sort order for rendering"
-    },
-    "loan_count": {
-      "type": "integer",
-      "description": "Number of loans in this category"
-    },
-    "balance": {
-      "type": "number",
-      "description": "Total balance of loans in this category"
-    },
-    "concentration_ratio_count": {
-      "type": "number",
-      "description": "Percentage of total loan count"
-    },
-    "concentration_ratio_balance": {
-      "type": "number",
-      "description": "Percentage of total balance"
-    },
-    "policy_limit": {
-      "type": ["number", "null"],
-      "description": "Policy limit percentage threshold, if any"
-    },
-    "within_policy": {
-      "type": ["boolean", "null"],
-      "description": "Whether concentration is within policy limit"
+    "values": {
+      "type": "array",
+      "description": "Values for each column in order matching headers"
     }
   },
-  "required": [
-    "label",
-    "row_type",
-    "display_order",
-    "loan_count",
-    "balance",
-    "concentration_ratio_count",
-    "concentration_ratio_balance"
-  ]
+  "required": ["label", "values"]
 }
