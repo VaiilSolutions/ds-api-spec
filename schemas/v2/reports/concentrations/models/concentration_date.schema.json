@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Concentration Report Date",
+  "type": "object",
+  "properties": {
+    "report_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Report date in YYYY-MM-DD format"
+    },
+    "report_label": {
+      "type": "string",
+      "description": "Human-readable label, e.g. 'Nov 2025'"
+    }
+  },
+  "required": ["report_date", "report_label"]
+}
