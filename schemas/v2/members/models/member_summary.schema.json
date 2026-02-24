@@ -5,6 +5,7 @@
     "open_loan_categories",
     "open_deposit_categories",
     "open_service_categories",
+    "deposit_count",
     "overdraft_count_12m",
     "last_login",
     "last_direct_deposit",
@@ -38,6 +39,10 @@
         "minLength": 1
       },
       "uniqueItems": true
+    },
+    "deposit_count": {
+      "type": "integer",
+      "minimum": 0
     },
     "overdraft_count_12m": {
       "type": "integer",
